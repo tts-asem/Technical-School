@@ -1703,34 +1703,6 @@
 
             showToast(`تمت مزامنة وإنشاء ${successCount} مجلد داخل حساب OneDrive الخاص بك!`, 'success');
         }
-                if (tab === 'evaluations' && !hasPermission('viewComprehensiveEval')) {
-                    showToast('تم حجب قسم التقييم الشامل عن حسابك', 'error');
-                }
-            }
-
-            state.activeAdminTab = tab;
-            const tabs = ['students', 'teachers', 'admins', 'evaluations', 'logs', 'publicLinks'];
-            tabs.forEach(t => {
-                const btn = document.getElementById('adminTab' + t.charAt(0).toUpperCase() + t.slice(1));
-                const panel = document.getElementById('adminPanel' + t.charAt(0).toUpperCase() + t.slice(1));
-                if (btn && panel) {
-                    if (t === tab) {
-                        btn.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 text-white transition';
-                        panel.classList.remove('hidden');
-                    } else {
-                        btn.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition';
-                        panel.classList.add('hidden');
-                    }
-                }
-            });
-
-            if (tab === 'students') renderAdminStudentsTable();
-            if (tab === 'teachers') renderAdminTeachersTable();
-            if (tab === 'admins') renderAdminAdminsTable();
-            if (tab === 'evaluations') renderEvaluationsTab();
-            if (tab === 'logs') renderAuditLogs();
-            if (tab === 'publicLinks') renderPublicLinks();
-        }
 
         function renderAdminActiveTabSearch() {
             if (state.activeAdminTab === 'students') renderAdminStudentsTable();
